@@ -1,44 +1,38 @@
-%define realname    south
-%define name   python-django-south
-%define version 0.7.2
-%define release %mkrel 1
-%define vcstag rc1
+%define tarname    South
+%define name	   python-django-south
+%define version	   0.7.3
+%define release	   %mkrel 1
 
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Summary:        Intelligent schema migrations for Django apps
+Summary:        Migrations for Django
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Source:         http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
 Group:          Development/Python
 License:        ASL 2.0
-URL:            http://south.aeracode.org
-Source:         %{realname}-%{version}.tar.gz
+URL:            http://south.aeracode.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildArch:      noarch
-BuildRequires:  python-devel python-setuptools
 Requires:       python-django
+BuildRequires:  python-devel, python-setuptools
 
 %description
-South brings migrations to Django applications. Its main objectives are to
-provide a simple, stable and database-independent migration layer to prevent
-all the hassle schema changes over time bring to your Django applications.
-
-%files
-%defattr(-,root,root,-)
-%doc docs/
-%{py_puresitedir}/*
-
-#--------------------------------------------------------------------
+South is an intelligent database migrations library for the Django web
+framework. It is database-independent and DVCS-friendly, as well as a
+whole host of other features.
 
 %prep
-%setup -q -n %{realname}
-
-%build
-%{__python} setup.py build
+%setup -q -n %{tarname}-%{version}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+%__rm -rf %{buildroot}
+PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot} --record=FILE_LIST
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+%__rm -rf %{buildroot}
+
+%files -f FILE_LIST
+%defattr(-,root,root,-)
+%doc README
+
 
