@@ -1,20 +1,17 @@
 %define tarname    South
-%define name	   python-django-south
-%define version	   0.7.3
-%define release	   %mkrel 1
 
 Summary:        Migrations for Django
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		    python-django-south
+Version:	    0.7.3
+Release:	    2
 Source:         http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
 Group:          Development/Python
 License:        ASL 2.0
 URL:            http://south.aeracode.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildArch:      noarch
 Requires:       python-django
-BuildRequires:  python-devel, python-setuptools
+BuildRequires:  python-devel
+BuildRequires:  python-setuptools
 
 %description
 South is an intelligent database migrations library for the Django web
@@ -25,14 +22,21 @@ whole host of other features.
 %setup -q -n %{tarname}-%{version}
 
 %install
-%__rm -rf %{buildroot}
 PYTHONDONTWRITEBYTECODE= %{__python} setup.py install --root=%{buildroot} --record=FILE_LIST
-
-%clean
-%__rm -rf %{buildroot}
+sed -i 's/.*egg-info$//' FILE_LIST
 
 %files -f FILE_LIST
-%defattr(-,root,root,-)
 %doc README
 
+
+
+
+%changelog
+* Mon Dec 12 2011 Lev Givon <lev@mandriva.org> 0.7.3-1
++ Revision: 740576
+- Update to 0.7.3.
+
+* Mon Nov 01 2010 Nicolas Lécureuil <nlecureuil@mandriva.com> 0.7.2-1mdv2011.0
++ Revision: 591685
+- import python-django-south
 
