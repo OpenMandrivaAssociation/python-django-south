@@ -2,9 +2,9 @@
 
 Summary:        Migrations for Django
 Name:		    python-django-south
-Version:	    0.7.3
-Release:	    2
-Source:         http://pypi.python.org/packages/source/S/%{tarname}/%{tarname}-%{version}.tar.gz
+Version:	    0.8.2
+Release:	    1
+Source:         http://www.aeracode.org/releases/south/south-%{version}.tar.gz
 Group:          Development/Python
 License:        ASL 2.0
 URL:            http://south.aeracode.org/
@@ -39,4 +39,5 @@ sed -i 's/.*egg-info$//' FILE_LIST
 * Mon Nov 01 2010 Nicolas Lécureuil <nlecureuil@mandriva.com> 0.7.2-1mdv2011.0
 + Revision: 591685
 - import python-django-south
+
 
