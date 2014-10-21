@@ -3,9 +3,9 @@
 Summary:        Migrations for Django
 
 Name:		    python-django-south
-Version:	    0.8.4
+Version:	    1.0
 Release:	    1
-Source:         http://pypi.python.org/packages/source/S/South/South-%{version}.tar.gz
+Source:         https://pypi.python.org/packages/source/S/South/South-%{version}.tar.gz
 Group:          Development/Python
 License:        ASL 2.0
 URL:            http://south.aeracode.org/
@@ -28,8 +28,3 @@ sed -i 's/.*egg-info$//' FILE_LIST
 
 %files -f FILE_LIST
 %doc README
-
-
-
-
-
