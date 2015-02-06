@@ -4,7 +4,7 @@ Summary:        Migrations for Django
 
 Name:		    python-django-south
 Version:	    1.0
-Release:	    1
+Release:	    2
 Source:         https://pypi.python.org/packages/source/S/South/South-%{version}.tar.gz
 Group:          Development/Python
 License:        ASL 2.0
